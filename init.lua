@@ -1,28 +1,32 @@
-mash_app   = {"alt", "shift"}
+mash_app  = {"cmd", "shift"}
 
-
-hs.hotkey.bind({"alt"}, "S", function ()
+hs.hotkey.bind(mash_app, "S", function ()
     hs.application.launchOrFocus("Slack")
 end)
 
-hs.hotkey.bind({"alt"}, "O", function ()
+
+hs.hotkey.bind(mash_app, "G", function ()
     hs.application.launchOrFocus("Google Chrome")
 end)
 
-hs.hotkey.bind({"alt"}, "P", function ()
+hs.hotkey.bind(mash_app, "P", function ()
     hs.application.launchOrFocus("Spotify")
 end)
 
-hs.hotkey.bind({"alt"}, "C", function ()
+hs.hotkey.bind(mash_app, "C", function ()
     hs.application.launchOrFocus("Cursor")
 end)
 
-hs.hotkey.bind({"alt"}, "i", function ()
+hs.hotkey.bind(mash_app, "I", function ()
     hs.application.launchOrFocus("iTerm")
 end)
 
+hs.hotkey.bind(mash_app, "E", function ()
+    hs.application.launchOrFocus("Preview")
+end)
+
 -- resize to occupy the whole screen
-hs.hotkey.bind({"alt", "shift"}, "O", function()
+hs.hotkey.bind(mash_app, "O", function()
   local win = hs.window.focusedWindow()
   if not win then
     hs.alert.show("No window focused - Please check Hammerspoon permissions")
@@ -44,7 +48,7 @@ hs.hotkey.bind({"alt", "shift"}, "O", function()
 end)
 
 -- resize to occupy the left half of the screen
-hs.hotkey.bind({"alt", "shift"}, "H", function()
+hs.hotkey.bind(mash_app, "H", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -58,7 +62,7 @@ hs.hotkey.bind({"alt", "shift"}, "H", function()
 end)
 
 -- resize to occupy the right half of the screen
-hs.hotkey.bind({"alt", "shift"}, "L", function()
+hs.hotkey.bind(mash_app, "L", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -87,7 +91,7 @@ end)
 -- end)
 
 -- Right, lower corner
-hs.hotkey.bind({"alt", "shift"}, "J", function()
+hs.hotkey.bind(mash_app, "J", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -101,7 +105,7 @@ hs.hotkey.bind({"alt", "shift"}, "J", function()
 end)
 
 -- Right upper corner
-hs.hotkey.bind({"alt", "shift"}, "K", function()
+hs.hotkey.bind(mash_app, "K", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -116,7 +120,7 @@ end)
 
 
 -- Move window to next screen
-hs.hotkey.bind({"alt", "shift"}, "N", function()
+hs.hotkey.bind(mash_app, "N", function()
     local win = hs.window.focusedWindow()
     if not win then
         hs.alert.show("No window focused")
