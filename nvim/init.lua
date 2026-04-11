@@ -44,6 +44,11 @@ require("lazy").setup({
       vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
       vim.keymap.set("n", "<leader>fg", builtin.live_grep,  { desc = "Live grep" })
       vim.keymap.set("n", "<leader>fb", builtin.buffers,    { desc = "Find buffers" })
+      vim.keymap.set("n", "<leader>fy", function()
+        local path = vim.fn.expand("%:p")
+        vim.fn.setreg("+", path)
+        vim.notify("Copied: " .. path)
+      end, { desc = "Copy abs path to clipboard" })
     end,
   },
 
