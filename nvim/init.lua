@@ -35,11 +35,18 @@ require("lazy").setup({
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("telescope").setup({
+        defaults = {
+          file_ignore_patterns = {},  -- clear default filters
+        },
         pickers = {
           find_files = {
-            find_command = { "find", ".", "-type", "f" },
+            find_command = vim.fn.executable("rg") == 1
+            and { "rg", "--files", "--hidden", "--glob", "!**/.git/*" }
+            or  { "find", ".", "-not", "-path", "*/.git/*" },
+            hidden = true,
           },
         },
+
       })
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<leader>fe", vim.cmd.Explore,    { desc = "Explore (netrw)" })
